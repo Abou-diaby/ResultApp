@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="640.0" styleClass="main-vbox" stylesheets="@/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ci.exam.controllers.ui.HomeUIController">
+  <children>
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="423.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+      <children>
+            <HBox alignment="CENTER" prefHeight="59.0" prefWidth="640.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="TEXT_ONLY" prefHeight="34.0" prefWidth="306.0" text="EXAMEN NATIONAL">
+                     <font>
+                        <Font name="Calibri Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Rectangle fx:id="codeColor" arcHeight="5.0" arcWidth="5.0" height="42.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="rectangle" width="166.0" />
+               </children>
+            </HBox>
+            <VBox layoutY="164.0" prefHeight="167.0" prefWidth="640.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="41.0" prefWidth="638.0" text="Taux de réussite" textAlignment="CENTER">
+                     <font>
+                        <Font name="Calibri" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label id="successRate" fx:id="successRate" alignment="CENTER" prefHeight="129.0" prefWidth="640.0" text="25.78 %" textAlignment="CENTER" textFill="#059e00">
+                     <font>
+                        <Font name="Calibri Bold" size="96.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" layoutY="349.0" prefHeight="59.0" prefWidth="640.0">
+               <children>
+                  <Button id="showResultBtn" mnemonicParsing="false" onAction="#doViewResult" prefHeight="47.0" prefWidth="172.0" styleClass="button" text="Consulter mon résultat">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <TextField fx:id="mat" layoutX="206.0" layoutY="107.0" prefHeight="26.0" prefWidth="215.0" styleClass="text-field" />
+            <Label layoutX="256.0" layoutY="82.0" text="Entrez votre matricule">
+               <font>
+                  <Font name="Calibri" size="14.0" />
+               </font>
+            </Label>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
