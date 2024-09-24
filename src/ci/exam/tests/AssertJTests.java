@@ -42,4 +42,10 @@ public class AssertJTests {
         assertThat(result).isNotNull().withFailMessage("Le résultat ne doit pas être null.");
     }
     
+    // Test 5: Vérifier que la navigation entre les écrans fonctionne
+    @Test
+    public void testScreenNavigation() {
+        String fullName = result.getNom() + " " + result.getPrenom();
+        assertThat(fullName).isEqualTo("Diaby Aboubacar").withFailMessage("Le nom complet doit être 'Aboubacar DIABY'.");
+    }
 }
