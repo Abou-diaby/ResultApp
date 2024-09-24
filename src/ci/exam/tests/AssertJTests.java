@@ -30,4 +30,10 @@ public class AssertJTests {
         String matricule = result.getMatricule();
         assertThat(matricule).isEqualTo("0075762").withFailMessage("Le matricule doit être '0075762'.");
     }
+    
+    // Test 3: Vérifier que le résultat "Succès" ou "Échec" s’affiche correctement
+    @Test
+    public void testResultStatusDisplay() {
+        assertThat(result.getStatut()).isTrue().withFailMessage("Le statut doit être 'Succès'.");
+    }
 }
