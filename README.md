@@ -1,4 +1,5 @@
 ## Description
+![HOME](https://github.com/user-attachments/assets/27d3a5a5-5fee-412e-8655-c8f52d186477)
 
 Application Windows de consultation de résultats d’un examen national. 
 L’utilisateur pourra consulter son résultat à partir de son matricule seulement. 
