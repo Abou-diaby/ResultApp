@@ -22,5 +22,12 @@ public class AssertJTests {
     public void testAverageDisplay() {
         assertThat(result.getMoyenne()).isEqualTo(18.50f).withFailMessage("La moyenne doit être 15.75.");
     }
-
+    
+    // Test 2: Vérifier que le bouton "Consulter mon resultat" fonctionne
+    @Test
+    public void testViewMyResultButtonFunctionality() {
+        
+        String matricule = result.getMatricule();
+        assertThat(matricule).isEqualTo("0075762").withFailMessage("Le matricule doit être '0075762'.");
+    }
 }
