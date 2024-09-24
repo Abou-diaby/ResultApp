@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.sql.Connection;
@@ -63,5 +64,10 @@ public class JUnitTests {
             }
         }, "La connexion à la base de données ne doit pas lever d'exception.");
     }
-
+    
+    // Test 5: Test de l’affichage des résultats
+    @Test
+    public void testResultDisplay() {
+        assertTrue(result.getStatut(), () -> "Le statut doit être 'Succès'.");
+    }
 }
