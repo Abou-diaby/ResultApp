@@ -69,4 +69,52 @@ public class BaseController {
         fetchData();
         rate = total != 0 ? totalSucces / total : 0;
     }
+    /**
+     * Récupère les résultats, à partir d'un matricule, de la base de données.
+     * 
+     * @param mat Le matricule du candidat
+     * @return Le resultat trouvé
+     */
+    public Result getOne(String mat) {
+        Connection connection = null;
+
+        try {
+            connection = getConnection();
+            if (connection != null) {
+                String query = "SELECT r.id, r.moyenne, r.statut, e.matricule, e.nom, e.prenom, e.date_naissance, e.ecole " +
+                        "FROM resultats r " +
+                        "JOIN etudiants e ON r.etudiant_id = e.id " +
+                        "WHERE e.matricule = ?";
+                try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+                    pstmt.setString(1, mat);
+
+                    try (ResultSet rs = pstmt.executeQuery()) {
+                        if (rs.next()) {
+                            int id = rs.getInt("r.id");
+                            String matricule = rs.getString("e.matricule");
+                            boolean statut = rs.getInt("r.statut") == 1;
+                            float moyenne = rs.getFloat("r.moyenne");
+                            String nom = rs.getString("e.nom");
+                            String prenom = rs.getString("e.prenom");
+                            Date dateNaissance = rs.getDate("e.date_naissance");
+                            String ecole = rs.getString("e.ecole");
+                            return new Result(id, matricule, statut, moyenne, nom, prenom, dateNaissance, ecole);
+                        }
+                    }
+                } catch (SQLException e) {
+                    System.out.println("Erreur: " + e.getMessage());
+                }
+            }
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    System.out.println("Erreur: " + e.getMessage());
+                }
+            }
+        }
+
+        return null;
+    }
 }
