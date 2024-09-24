@@ -1,3 +1,5 @@
+## Description
+
 Application Windows de consultation de résultats d’un examen national. 
 L’utilisateur pourra consulter son résultat à partir de son matricule seulement. 
 Après la recherche par matricule, l’application affiche le résultat de l’examen (Succès ou Échec) et un bouton "Afficher les détails". 
@@ -18,3 +20,20 @@ L’application sera développée sous Eclipse avec JavaFx et JDBC.
 [x] Gestion des exceptions
 [x] Implémentation de 5 Tests avec Junit
 [x] Implémentation de 5 Tests avec AssertJ
+
+## Technologies
+
+[x] JAVA (JAVA FX)
+[x] JDBC
+[x] MySQL
+
+## Outils
+
+[x] Eclipse
+[x] Scene Builder
+[x] MySQL Workbench
+
+## Utilisation
+
+[x] Ouvrez avec IDE Eclipse ou IntelliJ
+[x] Ajouter les bibliothèques (JavaFx, MySQL connectorJ, JUnit 5, AssertJ) 
