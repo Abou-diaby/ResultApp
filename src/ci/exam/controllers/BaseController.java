@@ -1,15 +1,22 @@
 package ci.exam.controllers;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Date;
 
+import ci.exam.model.Result;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.Node;
 
 public class BaseController {
 	private static final String URL = "jdbc:mysql://ls-0f19f4268096a452a869b6f8467bc299c51da519.cz6cgwgke8xd.eu-west-3.rds.amazonaws.com:3306/db0075762";
@@ -54,5 +61,12 @@ public class BaseController {
         }
 
         return connexion;
+    }
+    /**
+     * Calcule le pourcentage de succès basé sur les données récupérées.
+     */
+    public void calculPct() {
+        fetchData();
+        rate = total != 0 ? totalSucces / total : 0;
     }
 }
