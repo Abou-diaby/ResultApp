@@ -5,6 +5,7 @@ module ResultApp {
 	requires javafx.graphics;
 	requires javafx.controls;
 	requires org.junit.jupiter.api;
+	requires org.assertj.core;
 	
 	exports ci.exam;
 	opens ci.exam to javafx.fxml;

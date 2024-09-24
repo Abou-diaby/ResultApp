@@ -23,7 +23,7 @@ public class JUnitTests {
     @BeforeEach
     public void setUp() {
         // Initialisation avec des données d'exemple
-        result = new Result(1, "0075762", true, 15.75f, "Diaby", "Aboubacar", java.sql.Date.valueOf("2002-07-03"), "EST LOKO");
+        result = new Result(1, "0075762", true, 18.50f, "Diaby", "Aboubacar", java.sql.Date.valueOf("2002-07-03"), "EST LOKO");
     }
     
     // Test 1: Test de recherche par matricule valide
