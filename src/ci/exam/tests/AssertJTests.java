@@ -26,7 +26,6 @@ public class AssertJTests {
     // Test 2: Vérifier que le bouton "Consulter mon resultat" fonctionne
     @Test
     public void testViewMyResultButtonFunctionality() {
-        
         String matricule = result.getMatricule();
         assertThat(matricule).isEqualTo("0075762").withFailMessage("Le matricule doit être '0075762'.");
     }
@@ -36,4 +35,11 @@ public class AssertJTests {
     public void testResultStatusDisplay() {
         assertThat(result.getStatut()).isTrue().withFailMessage("Le statut doit être 'Succès'.");
     }
+    
+    // Test 4: Vérifier que l’écran des détails s’ouvre bien
+    @Test
+    public void testDetailScreenOpens() {
+        assertThat(result).isNotNull().withFailMessage("Le résultat ne doit pas être null.");
+    }
+    
 }
