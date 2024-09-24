@@ -2,6 +2,7 @@ package ci.exam.tests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,5 +29,13 @@ public class JUnitTests {
     @Test
     public void testInvalidMatricule() {
         assertNotEquals("0024577", result.getMatricule(), () -> "Le matricule ne doit pas être inexistant.");
+    }
+    
+    // Test 3: Test de validation des champs de texte
+    @Test
+    public void testTextFields() {
+        assertNotNull(result.getNom(), () -> "Le nom ne doit pas être null.");
+        assertNotNull(result.getPrenom(), () -> "Le prénom ne doit pas être null.");
+        assertNotNull(result.getEcole(), () -> "L'école ne doit pas être null.");
     }
 }
