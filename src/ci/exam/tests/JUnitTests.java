@@ -1,8 +1,14 @@
 package ci.exam.tests;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,4 +44,24 @@ public class JUnitTests {
         assertNotNull(result.getPrenom(), () -> "Le prénom ne doit pas être null.");
         assertNotNull(result.getEcole(), () -> "L'école ne doit pas être null.");
     }
+    
+    // Test 4: Test de la connexion à la base de données
+    @Test
+    public void testDatabaseConnection() {
+        assertDoesNotThrow(() -> {
+            try (Connection connection = DriverManager.getConnection(
+                    "jdbc:mysql://ls-0f19f4268096a452a869b6f8467bc299c51da519.cz6cgwgke8xd.eu-west-3.rds.amazonaws.com:3306/db0075762", 
+                    "user0075762", 
+                    "Yf3IgyBsOPa34WR")) {
+                
+                // Vérifie que la connexion n'est pas null
+                assertNotNull(connection, () -> "La connexion ne doit pas être null.");
+                
+            } catch (SQLException e) {
+                // Lève une exception en cas d'erreur de connexion à la base de données
+                fail("Échec de la connexion à la base de données : " + e.getMessage());
+            }
+        }, "La connexion à la base de données ne doit pas lever d'exception.");
+    }
+
 }
