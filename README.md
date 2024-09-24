@@ -1,40 +1,56 @@
-## Description
-![HOME](https://github.com/user-attachments/assets/27d3a5a5-5fee-412e-8655-c8f52d186477)
+**ResultApp - Application de Consultation des Résultats d'Examen**
 
-Application Windows de consultation de résultats d’un examen national. 
-L’utilisateur pourra consulter son résultat à partir de son matricule seulement. 
-Après la recherche par matricule, l’application affiche le résultat de l’examen (Succès ou Échec) et un bouton "Afficher les détails". 
-Ce bouton affiche un écran qui montre la moyenne obtenue sur 20 et les informations sur l’étudiant (Matricule, Nom, Prénom, Date de naissance, Ecole). 
-Stocker les informations de l’examen dans une base de données MySQL. 
-L’application sera développée sous Eclipse avec JavaFx et JDBC.
+![HOME](Aspose.Words.37c1dd57-da6f-493b-9b56-481784131d6f.001.png)
 
-## Fonctionalités
+**Description**
 
-[x] Connexion à la base de donnée
-[x] Affichage du taux de réussite en %
-[x] Recherche par matricule après saisir et cliquage sur le bouton "Consulter mon resultat"
-[x] Affichage du résultat (Succès ou échec) en vert pour succès et rouge pour échec suivi d'émoji heureux ou triste
-[x] Affichage d'un codeColor (vert pour succès et rouge pour échec)
-[x] Ajout d'un bouton "Afficher les détails"
-[x] Affichage des détails après cliquage (Matricule, Nom, Prénom, Date de naissance, Ecole, Moyenne)
-[x] Ajout d'un bouton "Retour" pour revenir à la page d'acceuil
-[x] Gestion des exceptions
-[x] Implémentation de 5 Tests avec Junit
-[x] Implémentation de 5 Tests avec AssertJ
+**ResultApp** est une application Windows qui permet aux étudiants de consulter leurs résultats d'examen national à l'aide de leur matricule. L'application interagit avec une base de données MySQL pour récupérer et afficher les résultats.
 
-## Technologies
+**Fonctionnalités principales :**
 
-[x] JAVA (JAVA FX)
-[x] JDBC
-[x] MySQL
+- **Recherche par Matricule** : L'utilisateur saisit son matricule, et en cliquant sur "Consulter mon résultat", il obtient son résultat d'examen.
+- **Affichage du Résultat** : Le résultat est présenté visuellement en vert (succès) ou en rouge (échec) avec un emoji associé (heureux ou triste).
+- **Détails sur le Résultat** : Un bouton "Afficher les détails" permet d'afficher des informations supplémentaires telles que :
+  - Matricule
+  - Nom et prénom
+  - Date de naissance
+  - École
+  - Moyenne obtenue sur 20
+- **Taux de Réussite** : Affichage du taux de réussite global en pourcentage.
+- **Navigation** : L'utilisateur peut revenir à la page d'accueil grâce à un bouton "Retour".
+- **Gestion des Exceptions** : Les erreurs, telles que la mauvaise connexion à la base de données, sont gérées efficacement.
+- **Tests** : L'application inclut des tests unitaires avec JUnit et AssertJ.
 
-## Outils
+**Fonctionnalités Détails :**
 
-[x] Eclipse
-[x] Scene Builder
-[x] MySQL Workbench
+- ![ref1]Connexion à la base de données MySQL.
+- ![ref1]Affichage du taux de réussite en pourcentage.
+- ![ref1]Recherche par matricule.
+- ![ref1]Affichage du résultat (Succès ou Échec) avec code couleur et emoji.
+- ![ref1]Détails supplémentaires sur l'étudiant après clic sur "Afficher les détails".
+- ![ref1]Retour à la page d'accueil.
+- ![ref1]Tests unitaires avec JUnit et AssertJ.
+- ![ref1]Gestion d'erreurs et exceptions.
 
-## Utilisation
+**Technologies Utilisées :**
 
-[x] Ouvrez avec IDE Eclipse ou IntelliJ
-[x] Ajouter les bibliothèques (JavaFx, MySQL connectorJ, JUnit 5, AssertJ) 
+- **Java (JavaFX)** : Pour l'interface utilisateur.
+- **JDBC (Java Database Connectivity)** : Pour la connexion à la base de données.
+- **MySQL** : Base de données pour stocker les résultats d'examen.
+
+**Outils :**
+
+- **Eclipse IDE** : Environnement de développement pour écrire le code.
+- **Scene Builder** : Outil graphique pour la conception des interfaces JavaFX.
+- **MySQL Workbench** : Outil pour la gestion de la base de données.
+
+**Utilisation :**
+
+1. Cloner le dépôt et ouvrir le projet dans **Eclipse** ou **IntelliJ**.
+2. Ajouter les bibliothèques suivantes :
+   a. **JavaFX** pour les interfaces graphiques.
+   b. **MySQL Connector/J** pour la connexion à la base de données.
+   c. **JUnit 5** pour les tests unitaires.
+   d. **AssertJ** pour des assertions plus expressives.
+
+[ref1]: Aspose.Words.37c1dd57-da6f-493b-9b56-481784131d6f.002.png
