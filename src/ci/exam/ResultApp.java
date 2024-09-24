@@ -2,6 +2,7 @@ package ci.exam;
 
 import java.io.IOException;
 
+import ci.exam.ui.FXMLPage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
