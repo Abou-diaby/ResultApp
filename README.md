@@ -1,5 +1,6 @@
 **ResultApp - Application de Consultation des Résultats d'Examen**
 
+![HOME](https://github.com/user-attachments/assets/5145fc8c-0b0e-4f98-abc8-7dd60652bad2)
 
 
 **Description**
