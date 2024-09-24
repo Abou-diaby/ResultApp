@@ -117,4 +117,39 @@ public class BaseController {
 
         return null;
     }
+    /**
+     * Récupère les données depuis la base de données et calcule les totaux pour le pourcentage.
+     */
+    public void fetchData() {
+        // Initialiser les variables totales
+        total = 0;
+        totalSucces = 0;
+
+        // Obtenir la connexion à la base de données
+        try (Connection connection = getConnection();
+             Statement stmt = connection.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT statut, moyenne FROM resultats")) {
+            
+            // Traiter les résultats
+            while (rs.next()) {
+                int statut = rs.getInt("statut");
+                float moyenne = rs.getFloat("moyenne");
+                
+                total += moyenne;
+                if (statut == 1) {
+                    totalSucces += moyenne;
+                }
+            }
+            
+        } catch (SQLException e) {
+            // Gérer les exceptions SQL
+            System.err.println("Erreur lors de la récupération des données: " + e.getMessage());
+        }
+        
+        // Calculer le pourcentage après avoir récupéré toutes les données
+        rate = (total > 0) ? totalSucces / total : 0;
+    }
+
+}
+
 }
