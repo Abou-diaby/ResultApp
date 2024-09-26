@@ -20,7 +20,7 @@ public class ResultApp extends Application {
 	@Override
     public void start(Stage stage) throws Exception {
         try {
-            // Charger l'interface graphique en premier
+            // Chargement de l'interface graphique en premier
             Parent root = FXMLLoader.load(FXMLPage.HOME.getPage());
 
             Scene scene = new Scene(root);
@@ -32,7 +32,7 @@ public class ResultApp extends Application {
             stage.setResizable(false);
             stage.show();
 
-            // Essayer de se connecter à la base de données après l'affichage
+            // se connecter à la base de données après l'affichage
             initializeDatabaseConnection();
 
         } catch (IOException e) {
@@ -42,10 +42,10 @@ public class ResultApp extends Application {
     }
 
     /**
-     * Essaye de se connecter à la base de données après l'affichage de la fenêtre.
+     * Essaie connexion à la base de données après l'affichage de la fenêtre.
      */
     private void initializeDatabaseConnection() {
-        // Essayer la connexion après affichage de l'interface graphique
+        // Essaie de la connexion après affichage de l'interface graphique
         try {
             // Appel à la méthode de connexion (qui peut lancer une exception)
             new ci.exam.controllers.BaseController().getConnection();
@@ -60,12 +60,12 @@ public class ResultApp extends Application {
      * Affiche une fenêtre d'erreur si la connexion à la base de données échoue.
      */
     private void showDatabaseErrorMessage() {
-        // Ici, tu peux montrer un message à l'utilisateur ou simplement logguer l'erreur
+        // montrer un message à l'utilisateur 
         System.out.println("Erreur de connexion à la base de données. L'application fonctionne en mode déconnecté.");
     }
 
     private void showErrorWindow(Stage stage, String message) {
-        // Créer une petite fenêtre pour afficher le message d'erreur
+        // Création d'une petite fenêtre pour afficher le message d'erreur
         Stage errorStage = new Stage();
         Scene errorScene = new Scene(new javafx.scene.control.Label(message), 300, 200);
         errorStage.setScene(errorScene);

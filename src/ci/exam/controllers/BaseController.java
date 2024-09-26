@@ -56,7 +56,7 @@ public class BaseController {
             connexion = DriverManager.getConnection(URL, USER, PASS);
             System.out.println("Connexion établie.");
         } catch (SQLException e) {
-            // Informer l'utilisateur que la connexion a échoué
+            // Message pour informer l'utilisateur que la connexion a échoué
             System.out.println("Une erreur est survenue lors de la connexion. L'application fonctionne en mode déconnecté.");
             connexion = null; // Retourne explicitement null en cas d'échec de connexion
         }
@@ -83,7 +83,7 @@ public class BaseController {
             if (connection == null) {
                 // Si la connexion est null, cela signifie que la base de données n'est pas accessible
                 System.out.println("Impossible de récupérer les données. Mode déconnecté activé.");
-                return null; // Retourner null ou un objet "Résultat" par défaut si la connexion échoue
+                return null; // Retourne null ou un objet "Résultat" par défaut si la connexion échoue
             }
 
             String query = "SELECT r.id, r.moyenne, r.statut, e.matricule, e.nom, e.prenom, e.date_naissance, e.ecole " +

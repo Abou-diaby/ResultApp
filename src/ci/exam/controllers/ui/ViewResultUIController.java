@@ -2,6 +2,7 @@ package ci.exam.controllers.ui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
 import ci.exam.controllers.BaseController;
@@ -59,8 +60,12 @@ public class ViewResultUIController extends BaseController implements Initializa
         detailsContainer.setVisible(false);
         
         if (res != null) {
+        	// Format de la date en JJ/MM/AAAA
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            String dateNaissanceFormatee = dateFormat.format(res.getDateNaissance());
+            
             userName.setText("Nom et prénoms: " + res.getNom() + " " + res.getPrenom()); 
-            userBirthDate.setText("Date de naissance: " + res.getDateNaissance().toString()); 
+            userBirthDate.setText("Date de naissance: " + dateNaissanceFormatee); 
             userMat.setText("Matricule: " + res.getMatricule()); 
             userEtab.setText("Établissement: " + res.getEcole()); 
             

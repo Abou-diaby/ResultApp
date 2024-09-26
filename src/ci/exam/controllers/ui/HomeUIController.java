@@ -29,9 +29,9 @@ public class HomeUIController extends BaseController implements Initializable {
      */
     @FXML
     void doViewResult(ActionEvent event) throws IOException {
-        String matricule = mat.getText().trim(); // Récupérer le matricule depuis le champ de texte
+        String matricule = mat.getText().trim(); // Récupère le matricule depuis le champ de texte
 
-        // Vérifier si le matricule est valide et non vide
+        // Vérifie si le matricule est valide et non vide
         if (matricule != null && !matricule.isEmpty() && matricule.length() >= 7) {
             res = getOne(matricule);
             if (res != null) {
