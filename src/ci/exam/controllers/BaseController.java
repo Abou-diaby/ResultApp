@@ -52,14 +52,14 @@ public class BaseController {
      */
     public Connection getConnection() {
         Connection connexion = null;
-
         try {
             connexion = DriverManager.getConnection(URL, USER, PASS);
             System.out.println("Connexion établie.");
         } catch (SQLException e) {
-            System.out.println("Une erreur est survenue lors de la connexion. Contenu: " + e.getMessage());
+            // Informer l'utilisateur que la connexion a échoué
+            System.out.println("Une erreur est survenue lors de la connexion. L'application fonctionne en mode déconnecté.");
+            connexion = null; // Retourne explicitement null en cas d'échec de connexion
         }
-
         return connexion;
     }
     /**
@@ -80,30 +80,34 @@ public class BaseController {
 
         try {
             connection = getConnection();
-            if (connection != null) {
-                String query = "SELECT r.id, r.moyenne, r.statut, e.matricule, e.nom, e.prenom, e.date_naissance, e.ecole " +
-                        "FROM resultats r " +
-                        "JOIN etudiants e ON r.etudiant_id = e.id " +
-                        "WHERE e.matricule = ?";
-                try (PreparedStatement pstmt = connection.prepareStatement(query)) {
-                    pstmt.setString(1, mat);
+            if (connection == null) {
+                // Si la connexion est null, cela signifie que la base de données n'est pas accessible
+                System.out.println("Impossible de récupérer les données. Mode déconnecté activé.");
+                return null; // Retourner null ou un objet "Résultat" par défaut si la connexion échoue
+            }
 
-                    try (ResultSet rs = pstmt.executeQuery()) {
-                        if (rs.next()) {
-                            int id = rs.getInt("r.id");
-                            String matricule = rs.getString("e.matricule");
-                            boolean statut = rs.getInt("r.statut") == 1;
-                            float moyenne = rs.getFloat("r.moyenne");
-                            String nom = rs.getString("e.nom");
-                            String prenom = rs.getString("e.prenom");
-                            Date dateNaissance = rs.getDate("e.date_naissance");
-                            String ecole = rs.getString("e.ecole");
-                            return new Result(id, matricule, statut, moyenne, nom, prenom, dateNaissance, ecole);
-                        }
+            String query = "SELECT r.id, r.moyenne, r.statut, e.matricule, e.nom, e.prenom, e.date_naissance, e.ecole " +
+                    "FROM resultats r " +
+                    "JOIN etudiants e ON r.etudiant_id = e.id " +
+                    "WHERE e.matricule = ?";
+            try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+                pstmt.setString(1, mat);
+
+                try (ResultSet rs = pstmt.executeQuery()) {
+                    if (rs.next()) {
+                        int id = rs.getInt("r.id");
+                        String matricule = rs.getString("e.matricule");
+                        boolean statut = rs.getInt("r.statut") == 1;
+                        float moyenne = rs.getFloat("r.moyenne");
+                        String nom = rs.getString("e.nom");
+                        String prenom = rs.getString("e.prenom");
+                        Date dateNaissance = rs.getDate("e.date_naissance");
+                        String ecole = rs.getString("e.ecole");
+                        return new Result(id, matricule, statut, moyenne, nom, prenom, dateNaissance, ecole);
                     }
-                } catch (SQLException e) {
-                    System.out.println("Erreur: " + e.getMessage());
                 }
+            } catch (SQLException e) {
+                System.out.println("Erreur: " + e.getMessage());
             }
         } finally {
             if (connection != null) {
@@ -117,36 +121,36 @@ public class BaseController {
 
         return null;
     }
+
     /**
      * Récupère les données depuis la base de données et calcule les totaux pour le pourcentage.
      */
     public void fetchData() {
-        // Initialiser les variables totales
         total = 0;
         totalSucces = 0;
 
-        // Obtenir la connexion à la base de données
-        try (Connection connection = getConnection();
-             Statement stmt = connection.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT statut, moyenne FROM resultats")) {
-            
-            // Traiter les résultats
+        try (Connection connection = getConnection()) {
+            if (connection == null) {
+                System.out.println("Connexion échouée. Mode déconnecté activé.");
+                return; // Sort de la méthode si aucune connexion n'a pu être établie
+            }
+
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT statut, moyenne FROM resultats");
+
             while (rs.next()) {
                 int statut = rs.getInt("statut");
                 float moyenne = rs.getFloat("moyenne");
-                
+
                 total += moyenne;
                 if (statut == 1) {
                     totalSucces += moyenne;
                 }
             }
-            
         } catch (SQLException e) {
-            // Gérer les exceptions SQL
             System.err.println("Erreur lors de la récupération des données: " + e.getMessage());
         }
-        
-        // Calculer le pourcentage après avoir récupéré toutes les données
+
         rate = (total > 0) ? totalSucces / total : 0;
     }
 
