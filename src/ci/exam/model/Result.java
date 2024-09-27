@@ -56,4 +56,30 @@ public class Result {
     public String getEcole() {
         return ecole;
     }
+    
+ // Setters
+    public void setStatut(boolean statut) {
+        this.statut = statut;
+    }
+
+    public void setMoyenne(float moyenne) {
+        this.moyenne = moyenne;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public void setDateNaissance(Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    public void setEcole(String ecole) {
+        this.ecole = ecole;
+    }
 }
+

@@ -69,6 +69,10 @@ public class ViewResultUIController extends BaseController implements Initializa
             userMat.setText("Matricule: " + res.getMatricule()); 
             userEtab.setText("Établissement: " + res.getEcole()); 
             
+         // Définir le statut en fonction de la moyenne
+            boolean statut = res.getMoyenne() >= 10; // true pour succès, false pour échec
+            res.setStatut(statut);
+            
          // Ajout d'emoji en fonction du statut
             if (res.getStatut()) {
                 resultMsg.setText("Succès 😊");  // Succès avec emoji heureux
